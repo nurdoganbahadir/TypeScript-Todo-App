@@ -14,6 +14,7 @@ interface todosList {
 const Main = () => {
   const [todos, setTodos] = useState<todosList[]>([]);
   const url = "https://634ac3fc5df952851418480f.mockapi.io/api/todos";
+  console.log(todos);
 
   const getTodos = async () => {
     try {

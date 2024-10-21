@@ -15,7 +15,8 @@ const AddTodo = ({ addTodo }: Props) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(task);
+    addTodo(task);
+    setTask("");
   };
 
   return (
@@ -34,11 +35,13 @@ const AddTodo = ({ addTodo }: Props) => {
         color="success"
         placeholder="New Todo"
         sx={{ minWidth: { xs: "100%", sm: "50%" }, height: "50px", m: 1 }}
+        value={task}
         onChange={handleChange}
       />
       <Button
         variant="contained"
         color="success"
+        type="submit"
         sx={{
           minWidth: { xs: "100%", sm: "15%" },
           height: { xs: "40px", sm: "55px" },
