@@ -24,9 +24,11 @@ const Main = () => {
     }
   };
 
-  const addTodo = async (task: string) => {
+  type AddFn = (task: string) => Promise<void>;
+  const addTodo: AddFn = async (task) => {
     try {
       await axios.post(url, { task, isDone: false });
+      getTodos();
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +41,7 @@ const Main = () => {
   return (
     <Container>
       <Header />
-      <AddTodo />
+      <AddTodo addTodo={addTodo} />
     </Container>
   );
 };

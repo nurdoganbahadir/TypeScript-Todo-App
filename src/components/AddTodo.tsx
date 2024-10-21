@@ -2,7 +2,11 @@ import { Box, Button, TextField } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import { useState } from "react";
 
-const AddTodo = () => {
+interface Props {
+  addTodo: (task: string) => Promise<void>;
+}
+
+const AddTodo = ({ addTodo }: Props) => {
   const [task, setTask] = useState("");
 
   const handleChange = (
