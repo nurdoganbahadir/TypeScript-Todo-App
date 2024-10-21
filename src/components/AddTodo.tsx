@@ -2,15 +2,22 @@ import { Box, Button, TextField } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import { useState } from "react";
 
-
-
-
 const AddTodo = () => {
   const [task, setTask] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setTask(e.target.value);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(task);
+  };
 
   return (
     <Box
       component="form"
+      onSubmit={handleSubmit}
       sx={{
         display: { xs: "block", sm: "flex" },
         justifyContent: { xs: "flex-start", sm: "center" },
@@ -21,7 +28,9 @@ const AddTodo = () => {
       <TextField
         variant="outlined"
         color="success"
+        placeholder="New Todo"
         sx={{ minWidth: { xs: "100%", sm: "50%" }, height: "50px", m: 1 }}
+        onChange={handleChange}
       />
       <Button
         variant="contained"
