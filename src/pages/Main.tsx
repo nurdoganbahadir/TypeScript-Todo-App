@@ -4,6 +4,7 @@ import AddTodo from "../components/AddTodo";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TodoList from "../components/TodoList";
+import { notify, SweetIcon } from "../helper/sweetAlert";
 
 // interface todosList {
 //   task: string;
@@ -30,8 +31,10 @@ const Main = () => {
     try {
       await axios.post(url, { task, isDone: false });
       getTodos();
+      notify("Todo created", SweetIcon.SUCCESS);
     } catch (error) {
       console.log(error);
+      notify("Todo not created!", SweetIcon.ERROR);
     }
   };
 
@@ -39,16 +42,20 @@ const Main = () => {
     try {
       await axios.put(`${url}/${todo.id}`, { ...todo, isDone: !todo.isDone });
       getTodos();
+      notify("Todo updated", SweetIcon.SUCCESS);
     } catch (error) {
       console.log(error);
+      notify("Todo not updated!", SweetIcon.ERROR);
     }
   };
   const deleteTodo: DeleteFn = async (id) => {
     try {
       await axios.delete(`${url}/${id}`);
       getTodos();
+      notify("Todo deleted", SweetIcon.SUCCESS);
     } catch (error) {
       console.log(error);
+      notify("Todo not deleted!", SweetIcon.ERROR);
     }
   };
 

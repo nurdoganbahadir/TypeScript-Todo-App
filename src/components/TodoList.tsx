@@ -46,19 +46,20 @@ const TodoList: React.FC<ITodoList> = ({ todos, updateTodo, deleteTodo }) => {
           align="center"
           variant="h4"
         >
-          {inProgressTodos.length ? (
-            inProgressTodos.map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                updateTodo={updateTodo}
-                deleteTodo={deleteTodo}
-              />
-            ))
-          ) : (
-            <Typography color="error">No Todos</Typography>
-          )}
+          Progress
         </Typography>
+        {inProgressTodos.length ? (
+          inProgressTodos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              updateTodo={updateTodo}
+              deleteTodo={deleteTodo}
+            />
+          ))
+        ) : (
+          <Typography color="error">No Todos</Typography>
+        )}
       </Grid>
       <Grid
         size={{ xs: 12, sm: 8, md: 5 }}
@@ -73,19 +74,20 @@ const TodoList: React.FC<ITodoList> = ({ todos, updateTodo, deleteTodo }) => {
         }}
       >
         <Typography className="title" color="green" align="center" variant="h4">
-          {completedTodos.length ? (
-            inProgressTodos.map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                updateTodo={updateTodo}
-                deleteTodo={deleteTodo}
-              />
-            ))
-          ) : (
-            <Typography color="error">No Completed Todos</Typography>
-          )}
+          Completed
         </Typography>
+        {completedTodos.length ? (
+          completedTodos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              updateTodo={updateTodo}
+              deleteTodo={deleteTodo}
+            />
+          ))
+        ) : (
+          <Typography color="error">No Completed Todos</Typography>
+        )}
       </Grid>
     </Grid>
   );
