@@ -1,8 +1,11 @@
+import { Container } from "@mui/material";
+import Main from "./pages/Main";
+
 function App() {
   return (
-    <div className="App">
-      <h1>TypeScript</h1>
-    </div>
+    <Container>
+      <Main />
+    </Container>
   );
 }
 
