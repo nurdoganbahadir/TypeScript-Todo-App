@@ -3,18 +3,18 @@ import Header from "../components/Header";
 import AddTodo from "../components/AddTodo";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TodoList from "../components/TodoList";
 
-interface todosList {
-  task: string;
-  isDone: boolean;
-  id: string | number;
-  owner?: string; //*bu veri olabilirde olmayabilirde
-}
+// interface todosList {
+//   task: string;
+//   isDone: boolean;
+//   id: string | number;
+//   owner?: string; //*bu veri olabilirde olmayabilirde
+// }
 
 const Main = () => {
   const [todos, setTodos] = useState<todosList[]>([]);
   const url = "https://634ac3fc5df952851418480f.mockapi.io/api/todos";
-  console.log(todos);
 
   const getTodos = async () => {
     try {
@@ -25,10 +25,27 @@ const Main = () => {
     }
   };
 
-  type AddFn = (task: string) => Promise<void>;
+  // type AddFn = (task: string) => Promise<void>;
   const addTodo: AddFn = async (task) => {
     try {
       await axios.post(url, { task, isDone: false });
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateTodo: UpdateFn = async (todo) => {
+    try {
+      await axios.put(`${url}/${todo.id}`, { ...todo, isDone: !todo.isDone });
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteTodo: DeleteFn = async (id) => {
+    try {
+      await axios.delete(`${url}/${id}`);
       getTodos();
     } catch (error) {
       console.log(error);
@@ -43,6 +60,7 @@ const Main = () => {
     <Container>
       <Header />
       <AddTodo addTodo={addTodo} />
+      <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
     </Container>
   );
 };
