@@ -17,8 +17,16 @@ const Main = () => {
 
   const getTodos = async () => {
     try {
-      const res = await axios(url);
-      console.log(res.data);
+      const { data } = await axios<todosList[]>(url);
+      setTodos(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addTodo = async (task: string) => {
+    try {
+      await axios.post(url, { task, isDone: false });
     } catch (error) {
       console.log(error);
     }
