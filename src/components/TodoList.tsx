@@ -14,6 +14,9 @@ const TodoList: React.FC<ITodoList> = ({ todos, updateTodo, deleteTodo }) => {
   const inProgressTodos = todos.filter((todo) => !todo.isDone);
   const completedTodos = todos.filter((todo) => todo.isDone);
 
+  console.log(inProgressTodos);
+  console.log(completedTodos);
+
   return (
     <Grid
       container

@@ -23,7 +23,7 @@ const TodoItem: FC<ITodoItem> = ({ todo, updateTodo, deleteTodo }) => {
           </IconButton>
         }
       >
-        <ListItemText primary={todo.task} onClick={() => updateTodo(todo.id)} />
+        <ListItemText primary={todo.task} onClick={() => updateTodo(todo)} />
       </ListItem>
     </List>
   );
