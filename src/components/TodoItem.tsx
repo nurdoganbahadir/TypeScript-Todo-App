@@ -1,6 +1,6 @@
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import React, { FC } from "react";
+import { FC } from "react";
 
 interface ITodoItem {
   todo: todosList;
@@ -10,7 +10,14 @@ interface ITodoItem {
 
 const TodoItem: FC<ITodoItem> = ({ todo, updateTodo, deleteTodo }) => {
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <List
+      sx={{
+        width: "100%",
+        maxWidth: 360,
+        bgcolor: "background.paper",
+        m: "auto",
+      }}
+    >
       <ListItem
         disableGutters
         sx={{ padding: "1rem", cursor: "pointer" }}
