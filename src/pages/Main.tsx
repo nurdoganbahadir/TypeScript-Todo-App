@@ -1,9 +1,14 @@
-
+import { Container } from "@mui/material";
+import Header from "../components/Header";
+import AddTodo from "../components/AddTodo";
 
 const Main = () => {
   return (
-    <div>Main</div>
-  )
-}
+    <Container>
+      <Header />
+      <AddTodo />
+    </Container>
+  );
+};
 
-export default Main
+export default Main;
